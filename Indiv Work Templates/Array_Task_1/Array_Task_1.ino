@@ -2,6 +2,30 @@
 
 void setup() {
   Serial.begin(9600);
+  int ar1[10];
+  int i = 0;
+//  
+  while (i < 11) {
+    ar1[i] = i * 3;
+    i++;
+  }
+
+  for (int i = 0; i < 11; i++) {
+    ar1[i] = i * 3;
+  }
+
+  for (int i = 0; i < 11; i++) {
+    Serial.print(ar1[i]);
+    Serial.print(" ");
+  }
+  
+  Serial.println();
+
+  for (int i = 0; i < 11; i++) {
+    if (ar1[i] % 9 == 0) {
+      Serial.println(ar1[i]);
+    }
+  }
 
   // Creat an array of type int and size 10:
 

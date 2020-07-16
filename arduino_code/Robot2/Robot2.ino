@@ -24,7 +24,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   forward(200);
   delay(500);
-diff_right(200);
+  diff_right(200);
   delay(500);
   
   sensor.update();

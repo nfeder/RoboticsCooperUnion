@@ -32,7 +32,7 @@ void loop() {
   Serial.print("accel for z: ");
   Serial.println(accelReading);
 
-//  double angle = accelReading * 90 - 90;
+//  double angle = accelReading * 90 + 90;
   int angle = 90;
   servo1.write(angle);
 }

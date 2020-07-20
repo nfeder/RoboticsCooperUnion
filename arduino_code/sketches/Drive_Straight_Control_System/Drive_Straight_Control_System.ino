@@ -22,6 +22,8 @@ double ki = 5;
 double kd = 0;
 PID controller(&input, &output, &setpoint, kp, ki, kd, DIRECT);
 
+int limit = 2000;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -39,7 +41,7 @@ void setup() {
   controller.SetMode(1);
 
   //initialize State
-  controller_state.setLinearState(0);
+  controller_state.setLinearState(160);
   controller_state.setRotationState(45);
 }
 
@@ -65,15 +67,11 @@ void loop() {
 //  Serial.println(output);
 
   //make the robot change directions every 2 seconds
-//  if (millis() % 2000 == 0) {
-//    if (controller_state.getLinearState() > 0) {
-//      controller_state.setLinearState(-160);
-//    }
-//    else if (controller_state.getLinearState() < 0) {
-//      controller_state.setLinearState(160);
-//    }
-//  }
+  if (millis() > limit) {
+    controller_state.setLinearState(controller_state.getLinearState() * -1);
+    controller_state.setRotationState(controller_state.getRotationState() * -1);
+    limit += 2000;
+  }
 //
-//  Serial.println(millis());
-  controller_state.setLinearState(-160);
+  Serial.println(millis());
 }

@@ -42,7 +42,7 @@ void setup() {
 
   //initialize State
   controller_state.setLinearState(160);
-  controller_state.setRotationState(45);
+  controller_state.setRotationState(-1);
 }
 
 void loop() {
@@ -53,8 +53,8 @@ void loop() {
   //get input (and print it for debugging)
   sensor.update();
   double angVelReading = sensor.get_ang_vel('z');
-//  Serial.print("angular velocity for z: ");
-//  Serial.print(angVelReading);
+  Serial.print("angular velocity for z: ");
+  Serial.print(angVelReading);
   input = angVelReading;
 
   //compute PID controller after input is updated
@@ -63,15 +63,13 @@ void loop() {
   //set motor power based on output from PID controller and print
   //for debugging
   raw_motor_control(controller_state.getLinearState() - output , controller_state.getLinearState() + output);
-//  Serial.print(" output: ");
-//  Serial.println(output);
+  Serial.print(" output: ");
+  Serial.println(output);
 
   //make the robot change directions every 2 seconds
-  if (millis() > limit) {
-    controller_state.setLinearState(controller_state.getLinearState() * -1);
-    controller_state.setRotationState(controller_state.getRotationState() * -1);
-    limit += 2000;
-  }
-//
-  Serial.println(millis());
+//  if (millis() > limit) {
+//    controller_state.setLinearState(controller_state.getLinearState() * -1);
+//    controller_state.setRotationState(controller_state.getRotationState() * -1);
+//    limit += 2000;
+//  }
 }

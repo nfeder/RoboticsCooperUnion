@@ -20,7 +20,7 @@
 
 //Global Variables
 //Distance threshold variable
-int thresh = 100;
+int thresh = 50;
 
 //SODAR
 //NOTE: in SODAR.cpp, remember to adjust the estimated_servo_response_time variable accordingly (on line 22)

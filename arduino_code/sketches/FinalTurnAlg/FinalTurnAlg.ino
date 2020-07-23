@@ -1,6 +1,5 @@
 //global variables
 int distance;
-boolean boo;
 
 //set up distance sensor and servo
 #include <Servo.h>
@@ -84,12 +83,7 @@ void loop() {
     distance = dist_sensor.getRange();
     dist_sensor.start();
   }
-  
-  //make random number to randomize which direction it will turn (optional)
-  int i = random(2); 
-  if (i == 0) {
-    i = -1;
-  }
+
 
   // if distance is low, slow down and change direction using State
   if (distance < DESIRED_DISTANCE) {
